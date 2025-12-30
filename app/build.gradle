@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.filmstreamer"
-        minSdk 21
+        minSdk 16
         targetSdk 23
         versionCode 1
         versionName "1.0"
