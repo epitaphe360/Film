@@ -28,8 +28,8 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
 
-        progressBar = findViewById(R.id.progressBar);
-        webView = findViewById(R.id.webView);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        webView = (WebView) findViewById(R.id.webView);
 
         setupWebView();
         webView.loadUrl(HOME_URL);
@@ -48,10 +48,15 @@ public class MainActivity extends Activity {
         webSettings.setAllowFileAccess(true);
         webSettings.setAllowContentAccess(true);
         webSettings.setLoadsImagesAutomatically(true);
-        webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         webSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
 
-        webSettings.setMediaPlaybackRequiresUserGesture(false);
+        // setMixedContentMode et setMediaPlaybackRequiresUserGesture nécessitent API 21+
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        }
+        if (android.os.Build.VERSION.SDK_INT >= 17) {
+            webSettings.setMediaPlaybackRequiresUserGesture(false);
+        }
 
         webView.setWebViewClient(new AdBlockWebViewClient(this));
         webView.setWebChromeClient(new CustomWebChromeClient(progressBar));
