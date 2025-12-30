@@ -16,9 +16,35 @@ Application Android avec blocage de publicités pour regarder des films en strea
 - JDK 8 ou supérieur
 - Android SDK API 21+ (Android 5.0 Lollipop minimum)
 
-## Installation
+## Installation rapide
 
-### Méthode 1 : Avec Android Studio
+### 📦 APK Pré-compilé (Recommandé)
+
+Un APK pré-compilé est disponible : **Film-Streamer.apk** (22 KB)
+
+1. Téléchargez `Film-Streamer.apk` depuis ce repository
+2. Transférez-le sur votre téléphone Android
+3. Activez "Sources inconnues" dans Paramètres > Sécurité
+4. Installez l'APK
+
+### 🔨 Compiler vous-même
+
+#### Méthode 1 : Script de build manuel (Sans internet requis)
+
+```bash
+# Script de build qui utilise les outils Android en ligne de commande
+./build-apk.sh
+
+# L'APK sera généré dans :
+# build-manual/app-debug.apk
+```
+
+**Prérequis pour build-apk.sh :**
+- Android SDK installé (`/usr/lib/android-sdk` ou définir `SDK_PATH`)
+- Java JDK 8+
+- Build tools (aapt, dx/dalvik-exchange, apksigner)
+
+#### Méthode 2 : Avec Android Studio
 
 1. Clonez le repository
 2. Ouvrez le projet dans Android Studio
@@ -26,10 +52,10 @@ Application Android avec blocage de publicités pour regarder des films en strea
 4. Connectez un appareil Android ou lancez un émulateur
 5. Cliquez sur "Run" (Shift + F10)
 
-### Méthode 2 : Ligne de commande
+#### Méthode 3 : Ligne de commande avec Gradle
 
 ```bash
-# Compiler le projet
+# Compiler le projet (nécessite connexion internet)
 ./gradlew assembleDebug
 
 # L'APK sera généré dans :
